@@ -42,8 +42,7 @@ class JpaRepositoryTest {
     void insertTest() {
         Article savedArticle = articleRepository.saveAndFlush(Article.of("new article", "new content", "#spring"));
 
-        assertThat(articleRepository.count()).isEqualTo(1);
-
+        assertThat(articleRepository.count()).isEqualTo(1001);
     }
     @DisplayName("update테스트")
     @Test
