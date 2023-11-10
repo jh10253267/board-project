@@ -18,9 +18,8 @@ import java.util.Objects;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class ArticleComment {
+public class ArticleComment extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,20 +30,6 @@ public class ArticleComment {
     @Setter
     @Column(nullable = false, length = 500)
     private String content; // 본문
-
-    @CreatedDate
-    @Column(nullable = false)
-    private LocalDateTime createdAt; // 생성일시
-    //생성자를 어떻게 알아낼 수 있을까? jpaconfig
-    @CreatedBy
-    @Column(nullable = false)
-    private String createdBy; // 생성자
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt; // 변경일시
-    @LastModifiedBy
-    @Column(nullable = false)
-    private String modifiedBy; // 변경자
 
     protected ArticleComment() {
     }
