@@ -21,9 +21,9 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
+
 @Entity
-public class Article {
+public class Article extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,22 +41,6 @@ public class Article {
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
-
-    @CreatedDate
-    @Column(nullable = false)
-    private LocalDateTime createdAt; // 생성일시
-    //생성자를 어떻게 알아낼 수 있을까? jpaconfig
-    @CreatedBy
-    @Column(nullable = false)
-    private String createdBy; // 생성자
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt; // 변경일시
-    @LastModifiedBy
-    @Column(nullable = false)
-    private String modifiedBy; // 변경자
-
-
     //팩토리 메소드 사용해보기
     private Article(String title, String content, String hashtag) {
         this.title = title;
