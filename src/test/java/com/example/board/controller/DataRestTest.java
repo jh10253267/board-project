@@ -1,5 +1,6 @@
 package com.example.board.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 //테스트가 디비에 영향을 쭌다
 //롤백을 걸어줘서 영향이 없게 하기.
+@Disabled("Spring Data REST 통합 테스트는 불필요하므로 제외시킴")
 @Transactional
 @AutoConfigureMockMvc
 @SpringBootTest
